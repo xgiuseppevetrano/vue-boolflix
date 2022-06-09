@@ -4,7 +4,7 @@
             <li class="films__list" v-for="film in SharedFilms.films" :key="film.id">
                 {{film.title}} - 
                 {{film.original_title}} - 
-                {{film.original_language}} - 
+                <flag :iso="LanguageIso(film.original_language)"/> - 
                 {{film.vote_average}}
             </li>
         </ul>
@@ -21,6 +21,12 @@
                 SharedFilms
             }
         },
+        methods: {
+            LanguageIso(language) {
+                return language === 'en' ? 'gb' : language === 'ja' ? 'jp' : language;
+            }
+        }
+
     }
 </script>
 

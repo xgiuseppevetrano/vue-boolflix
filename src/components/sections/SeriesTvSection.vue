@@ -4,7 +4,7 @@
             <li class="tv-series__list" v-for="serie in SharedFilms.tvSeries" :key="serie.id">
                 {{serie.name}} - 
                 {{serie.original_name}} - 
-                {{serie.original_language}} - 
+                <flag :iso="LanguageIso(serie.original_language)"/> - 
                 {{serie.vote_average}}
             </li>
         </ul>
@@ -18,9 +18,14 @@
         name: 'SeriesTvSection',
         data() {
             return {
-                SharedFilms
+                SharedFilms,
             }
         },
+        methods: {
+            LanguageIso(language) {
+                return language === 'en' ? 'gb' : language === 'ja' ? 'jp' : language;
+            }
+        }
     }
 </script>
 
