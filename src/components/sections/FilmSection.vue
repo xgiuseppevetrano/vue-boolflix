@@ -1,8 +1,12 @@
 <template>
     <section class="films">
-        <h3 class="films__title">Film</h3>
         <ul>
-            <li class="films__list" v-for="film in SharedFilms.films" :key="film.id">{{film.title}} - {{film.original_title}} - {{film.original_language}} - {{film.vote_average}}</li>
+            <li class="films__list" v-for="film in SharedFilms.films" :key="film.id">
+                {{film.title}} - 
+                {{film.original_title}} - 
+                {{film.original_language}} - 
+                {{film.vote_average}}
+            </li>
         </ul>
     </section>
 </template>
@@ -23,17 +27,5 @@
 <style lang="scss" scoped>
     .films {
         padding-bottom: 1.25rem;
-
-        &__title {
-            text-transform: uppercase;
-            color: lightcoral;
-            margin-bottom: .625rem;
-        }
-
-        &__list {
-            color: var(--primary-color-text);
-            margin-bottom: .3125rem;
-            list-style-type: none;
-        }
     }
 </style>

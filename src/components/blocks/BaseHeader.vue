@@ -18,10 +18,5 @@
 </script>
 
 <style lang="scss" scoped>
-    header {
-        height: var(--header-height);
-        background-color: var(--primary-color);
-        display: flex;
-        align-items: center;
-    }
+
 </style>
