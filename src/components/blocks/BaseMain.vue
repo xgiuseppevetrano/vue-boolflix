@@ -1,24 +1,18 @@
 <template>
     <main>
         <div class="container">
-            <MoviesSection :films="SharedFilms.films" :tvSeries="SharedFilms.tvSeries"/>
+            <BaseSection/>
         </div>
     </main>
 </template>
 
 <script>
-    import MoviesSection from "../sections/MoviesSection.vue";
-    import SharedFilms from "../../shared/SharedFilms";
+    import BaseSection from "../sections/BaseSection.vue";
 
     export default {
         name: 'BaseMain',
-        data() {
-            return {
-                SharedFilms
-            }
-        },
         components: {
-            MoviesSection,
+            BaseSection,
         }
     }
 </script>

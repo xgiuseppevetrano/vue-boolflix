@@ -1,7 +1,7 @@
 <template>
     <div class="search-bar">
         <form @submit.prevent="submitForm()">
-            <input type="text" placeholder="Search film" v-model="search">
+            <input type="text" placeholder="Search film" v-model="search" required>
             <button type="submit">Search</button>
         </form>
     </div>
@@ -9,14 +9,14 @@
 
 <script>
     import axios from 'axios';
-    import SharedFilms from "../../shared/SharedFilms";
+    import Shared from "../../shared/Shared";
 
     export default {
         name: 'SearchBarSection',
         data() {
             return {
                 search: '',
-                SharedFilms
+                Shared
             }
         },
         methods: {
@@ -30,7 +30,8 @@
                         }
                     }
                 ).then((response) => {
-                    SharedFilms.films = response.data.results;
+                    Shared.films = response.data.results;
+                    this.search = '';
                 }).catch((error) => {
                     console.log(error);
                 })
@@ -44,7 +45,8 @@
                         }
                     }
                 ).then((response) => {
-                    SharedFilms.tvSeries = response.data.results;
+                    Shared.tvSeries = response.data.results;
+                    this.search = '';
                 }).catch((error) => {
                     console.log(error);
                 })
