@@ -1,13 +1,13 @@
 <template>
     <main>
         <div class="container">
-            <FilmSection :films="SharedFilms.films" :tvSeries="SharedFilms.tvSeries"/>
+            <MoviesSection :films="SharedFilms.films" :tvSeries="SharedFilms.tvSeries"/>
         </div>
     </main>
 </template>
 
 <script>
-    import FilmSection from "../sections/FilmSection.vue";
+    import MoviesSection from "../sections/MoviesSection.vue";
     import SharedFilms from "../../shared/SharedFilms";
 
     export default {
@@ -18,7 +18,7 @@
             }
         },
         components: {
-            FilmSection,
+            MoviesSection,
         }
     }
 </script>
