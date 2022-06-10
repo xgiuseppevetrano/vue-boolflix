@@ -1,10 +1,13 @@
 <template>
     <div class="card">
-        <img :src="urlImage(card.poster_path)">
-        <span>{{card.title || card.name}}</span>
-        <span>{{card.original_title || card.original_name}}</span>
-        <flag :iso="languageIso(card.original_language)"/>
-        <span class="star" v-html="starsVote(card.vote_average)"></span>
+        <img class="card__img" :src="urlImage(card.poster_path)">
+        <div class="card__overlay">
+            <p class="card__title"><strong>Titolo:</strong> {{card.title || card.name}}</p>
+            <p class="card__original-title"><strong>Titolo originale:</strong> {{card.original_title || card.original_name}}</p>
+            <p class="card__description"><strong>Description:</strong> {{card.overview}}</p>
+            <p class="card__language"><strong>Lingua:</strong> <flag :iso="languageIso(card.original_language)"/></p>
+            <p class="card__stars"><strong>Voto:</strong> <span class="star" v-html="starsVote(card.vote_average)"></span></p>
+        </div>
     </div>
 </template>
 
@@ -34,16 +37,40 @@ export default {
                 htmlEmptyStars += '<i class="fa-regular fa-star"></i>';
             }
             return `${htmlFullStars}${htmlEmptyStars}`;
-        },
-    },
-    created() {
-        console.log(this.card);
+        }
     }
 }
 </script>
 
 <style lang="scss" scoped>
-    .star {
-        color: #fdcc0d;
+    .card {
+        position: relative;
+        
+        &__overlay {
+            display: none;
+            position: absolute;
+            right: 0;
+            left: 0;
+            bottom: 0;
+            height: 50%;
+            background-color: rgba(0, 0, 0, 0.8);
+            overflow-y: auto;
+            color: white;
+            font-size: .875rem;
+        }
+
+        &__img {
+            height: 100%;
+            width: 100%;
+        }
+
+        .star {
+            color: #fdcc0d;
+        }
+
+        &:hover &__overlay {
+            transition: 1s ease-in;
+            display: block;
+        }
     }
 </style>
