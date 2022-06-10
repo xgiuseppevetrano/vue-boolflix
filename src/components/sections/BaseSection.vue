@@ -2,8 +2,8 @@
     <section>
         <div class="container">
             <div class="row">
-                <BaseCard class="col-12 col-sm-6 col-lg-3 mb-3" v-for="film in Shared.films" :key="film.id" :arr="Shared.films"/>
-                <BaseCard class="col-12 col-sm-6 col-lg-3 mb-3" v-for="tvSerie in Shared.tvSeries" :key="tvSerie.id" :arr="Shared.tvSeries"/>
+                <BaseCard class="col-12 col-sm-6 col-lg-3 mb-3" v-for="film in Shared.films" :key="film.id" :card="film"/>
+                <BaseCard class="col-12 col-sm-6 col-lg-3 mb-3" v-for="tvSerie in Shared.tvSeries" :key="tvSerie.id" :card="tvSerie"/>
             </div>
         </div>
     </section>

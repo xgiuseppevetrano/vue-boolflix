@@ -1,10 +1,10 @@
 <template>
     <div class="card">
-        <img :src="urlImage(arr.poster_path)">
-        <span>{{arr.title || arr.name}}</span>
-        <span>{{arr.original_title || arr.original_name}}</span>
-        <flag :iso="languageIso(arr.original_language)"/>
-        <span class="star" v-html="starsVote(arr.vote_average)"></span>
+        <img :src="urlImage(card.poster_path)">
+        <span>{{card.title || card.name}}</span>
+        <span>{{card.original_title || card.original_name}}</span>
+        <flag :iso="languageIso(card.original_language)"/>
+        <span class="star" v-html="starsVote(card.vote_average)"></span>
     </div>
 </template>
 
@@ -12,7 +12,7 @@
 export default {
     name: 'BaseCard',
     props: {
-        arr: Array,
+        card: Object,
     },
     methods: {
         languageIso(language) {
@@ -35,7 +35,9 @@ export default {
             }
             return `${htmlFullStars}${htmlEmptyStars}`;
         },
-
+    },
+    created() {
+        console.log(this.card);
     }
 }
 </script>
