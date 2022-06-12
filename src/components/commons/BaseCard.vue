@@ -1,12 +1,17 @@
 <template>
     <div class="card">
-        <img class="card__img" :src="urlImage(card.poster_path)">
+        <img class="card__img" :src="urlImage(card.poster_path)" :alt="card.title || card.name">
         <div class="card__overlay">
-            <p class="card__title"><strong>Titolo:</strong> {{card.title || card.name}}</p>
-            <p class="card__original-title"><strong>Titolo originale:</strong> {{card.original_title || card.original_name}}</p>
-            <p class="card__description"><strong>Description:</strong> {{card.overview}}</p>
-            <p class="card__language"><strong>Lingua:</strong> <flag :iso="languageIso(card.original_language)"/></p>
-            <p class="card__stars"><strong>Voto:</strong> <span class="star" v-html="starsVote(card.vote_average)"></span></p>
+            <div class="card__info">
+                <h4 class="card__title"> {{card.title || card.name}}</h4>
+            </div>
+            <div class="card__description">
+                <p>{{card.overview || 'No description'}}</p>
+            </div>
+            <div class="card__info-plus">
+                <flag :iso="languageIso(card.original_language)"/>
+                <span class="card__star" v-html="starsVote(card.vote_average)"></span>
+            </div>
         </div>
     </div>
 </template>
@@ -48,15 +53,16 @@ export default {
         
         &__overlay {
             display: none;
+            flex-direction: column;
             position: absolute;
             right: 0;
             left: 0;
             bottom: 0;
-            height: 50%;
+            height: 60%;
             background-color: rgba(0, 0, 0, 0.8);
-            overflow-y: auto;
             color: white;
             font-size: .875rem;
+            padding: .3125rem;
         }
 
         &__img {
@@ -64,13 +70,46 @@ export default {
             width: 100%;
         }
 
-        .star {
+        &__info {
+            text-align: center;
+            padding-bottom: .3125rem;
+        }
+
+        &__description {
+            flex-grow: 1;
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: .375rem;
+            }
+
+            &::-webkit-scrollbar-track {
+                border-radius: .625rem;
+            }
+                
+            &::-webkit-scrollbar-thumb {
+                background: lightgray; 
+                border-radius: .625rem;
+            }
+
+            &::-webkit-scrollbar-thumb:hover {
+                background: gray; 
+            }
+        }
+
+        &__info-plus {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: .3125rem;
+        }
+
+        &__star {
             color: #fdcc0d;
         }
 
         &:hover &__overlay {
-            transition: 1s ease-in;
-            display: block;
+            display: flex;
         }
     }
 </style>

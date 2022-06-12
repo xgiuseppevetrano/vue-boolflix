@@ -18,5 +18,7 @@
 </script>
 
 <style lang="scss" scoped>
-
+    main {
+        background-color: rgba(var(--primary-color), 0.98);
+    }
 </style>

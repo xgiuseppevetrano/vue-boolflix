@@ -1,22 +1,35 @@
 <template>
     <header>
         <div class="container">
-            <SearchBarSection/>
+            <div class="header">
+                <LogoSection/>
+                <SearchBarSection/>
+            </div>
         </div>
     </header>
 </template>
 
 <script>
+    import LogoSection from '../sections/LogoSection.vue'
     import SearchBarSection from '../sections/SearchBarSection.vue'
 
     export default {
         name: 'BaseHeader',
         components: {
+            LogoSection,
             SearchBarSection,
         }
     }
 </script>
 
 <style lang="scss" scoped>
+    header {
+        background-color: rgb(var(--primary-color));
 
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
 </style>

@@ -1,8 +1,8 @@
 <template>
     <div class="search-bar">
         <form @submit.prevent="submitForm()">
-            <input type="text" placeholder="Search film" v-model="search" required>
-            <button type="submit">Search</button>
+            <input class="search-bar__input" type="text" placeholder="Search film or tv series" v-model="search" required>
+            <button class="search-bar__button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
     </div>
 </template>
@@ -16,7 +16,7 @@
         data() {
             return {
                 search: '',
-                Shared
+                Shared,
             }
         },
         methods: {
@@ -51,11 +51,31 @@
                     console.log(error);
                 })
 
-            }
+            },
         }
     }
 </script>
 
 <style lang="scss" scoped>
+    .search-bar {
+        &__input {
+            margin-right: 3.125rem;
+            padding: .5rem 1.25rem;
+            border-radius: .9375rem;
+            border: none;
+            text-align: center;
+        }
 
+        &__button {
+            border: none;
+            background-color: transparent;
+            font-size: 1.5625rem;
+            color: var(--primary-color-text);
+            vertical-align: middle;
+
+            &:hover {
+                color: #ee2721;
+            }
+        }
+    }
 </style>
