@@ -19,8 +19,26 @@
 
 <style lang="scss" scoped>
     main {
-        background-color: rgba(var(--primary-color), 0.98);
-        min-height: calc(100vh - 6.25rem);
+        background-color: var(--primary-color);
+        height: var(--main-height);
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+            width: .5rem;
+        }
+        
+        &::-webkit-scrollbar-track {
+            border-radius: .625rem;
+        }
+            
+        &::-webkit-scrollbar-thumb {
+            background: lightgray; 
+            border-radius: .625rem;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: gray;
+        }
 
         .main__title {
             text-transform: uppercase;

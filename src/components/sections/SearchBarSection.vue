@@ -1,9 +1,14 @@
 <template>
     <div class="search-bar">
         <form @submit.prevent="submitForm()">
-            <input class="search-bar__input" type="text" placeholder="Search film or tv series" v-model="search" required>
+            <input class="search-bar__input" type="text" placeholder="Cerca un film o una serie tv" v-model="search" required>
             <button class="search-bar__button" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
+        <span class="search-bar__icon"><i class="fa-solid fa-bell"></i></span>
+        <div class="search-bar__profile">
+            <img class="search-bar__profile-img" src="https://occ-0-728-778.1.nflxso.net/dnm/api/v6/K6hjPJd6cR6FpVELC5Pd6ovHRSk/AAAABblk273QcrCjR5jPR9T6L9taELQ9mbaVRrNiR2HzjkJRGuz7kz-ZQAPz4hEXsNe2xFZP7FZtdetaa8xsfjD1apzCdT9BqtE.png?r=3e2" alt="">
+            <span class="search-bar__profile-menu"><i class="fa-solid fa-caret-down"></i></span>
+        </div>
     </div>
 </template>
 
@@ -85,9 +90,12 @@
 
 <style lang="scss" scoped>
     .search-bar {
+        display: flex;
+        align-items: center;
+
         &__input {
-            margin-right: 3.125rem;
-            padding: .3125rem 1.25rem;
+            margin-right: 1.5625rem;
+            padding: .3125rem .9375rem;
             border-radius: .9375rem;
             border: none;
             text-align: center;
@@ -96,13 +104,31 @@
         &__button {
             border: none;
             background-color: transparent;
-            font-size: 1.5625rem;
+            font-size: 1.25rem;
             color: var(--primary-color-text);
             vertical-align: middle;
+        }
 
-            &:hover {
-                color: #ee2721;
-            }
+        &__button:hover &__input {
+            display: inline-block;
+        }
+
+        &__icon {
+            margin: 0 1.5625rem;
+            font-size: 1.25rem;
+            color: var(--primary-color-text);
+        }
+
+        &__profile-img {
+            height: 2.1875rem;
+            aspect-ratio: 1;
+            border-radius: .25rem;
+            vertical-align: middle;
+        }
+
+        &__profile-menu {
+            color: var(--primary-color-text);
+            margin-left: .625rem;
         }
     }
 </style>

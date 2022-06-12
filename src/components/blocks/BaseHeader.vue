@@ -24,8 +24,12 @@
 
 <style lang="scss" scoped>
     header {
-        background-color: rgb(var(--primary-color));
-        height: 6.25rem;
+        background-color: var(--primary-color);
+        height: var(--header-height);
+
+        .container {
+            max-width: var(--container-header-md);
+        }
 
         .header {
             display: flex;

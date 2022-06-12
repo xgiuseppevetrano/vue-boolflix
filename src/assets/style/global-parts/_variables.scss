@@ -2,11 +2,20 @@
     /*------------
         COLORS
     ------------*/
-    --primary-color: 00, 00, 00;
+    --primary-color: #141414;
     --primary-color-text: #fff;
+    --secondary-color-text: #e5e5e5;
+    --tertiary-color-text: #b3b3b3;
 
     /*----------------
         CONTAINERS
     ----------------*/
-    --container-md: 80rem;
+    --container-header-md: 87.5rem;
+    --container-main-md: 80rem;
+
+    /*-------------------
+        BLOCKS HEIGHT
+    -------------------*/
+    --header-height: 3.75rem;
+    --main-height: calc(100vh - var(--header-height));
 }
