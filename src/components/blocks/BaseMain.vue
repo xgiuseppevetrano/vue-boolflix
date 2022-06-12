@@ -20,5 +20,10 @@
 <style lang="scss" scoped>
     main {
         background-color: rgba(var(--primary-color), 0.98);
+        min-height: calc(100vh - 6.25rem);
+
+        .main__title {
+            text-transform: uppercase;
+        }
     }
 </style>

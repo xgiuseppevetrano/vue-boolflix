@@ -28,7 +28,7 @@ export default {
         },
         urlImage(url) {
             if (url === null) {
-                return `https://via.placeholder.com/185x260`
+                return `https://via.placeholder.com/185x260?text=No image`
             } 
             return `https://image.tmdb.org/t/p/w185/${url}`
         },

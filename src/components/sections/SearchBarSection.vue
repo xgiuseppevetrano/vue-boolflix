@@ -19,6 +19,34 @@
                 Shared,
             }
         },
+        created() {
+            axios.get('https://api.themoviedb.org/3/movie/popular',
+                {
+                    params: {
+                        api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
+                        language: 'it-IT'
+                    }
+                }
+            ).then((response) => {
+                Shared.films = response.data.results;
+            }).catch((error) => {
+                console.log(error);
+            })
+
+            axios.get('https://api.themoviedb.org/3/tv/popular',
+                {
+                    params: {
+                        api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
+                        language: 'it-IT'
+                    }
+                }
+            ).then((response) => {
+                Shared.tvSeries = response.data.results;
+            }).catch((error) => {
+                console.log(error);
+            })
+
+        },
         methods: {
             submitForm() {
                 axios.get('https://api.themoviedb.org/3/search/movie',
@@ -50,7 +78,6 @@
                 }).catch((error) => {
                     console.log(error);
                 })
-
             },
         }
     }
@@ -60,7 +87,7 @@
     .search-bar {
         &__input {
             margin-right: 3.125rem;
-            padding: .5rem 1.25rem;
+            padding: .3125rem 1.25rem;
             border-radius: .9375rem;
             border: none;
             text-align: center;
