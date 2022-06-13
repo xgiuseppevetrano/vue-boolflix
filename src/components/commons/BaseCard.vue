@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         languageIso(language) {
-            return language === 'en' ? 'gb' : language === 'ja' ? 'jp' : language;
+            return language === 'en' ? 'gb' : language === 'ja' ? 'jp' : language === 'ms' ? 'gb' : language;
         },
         urlImage(url) {
             if (url === null) {
@@ -50,7 +50,7 @@ export default {
 <style lang="scss" scoped>
     .card {
         position: relative;
-        
+                
         &__overlay {
             display: none;
             flex-direction: column;

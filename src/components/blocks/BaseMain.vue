@@ -8,12 +8,46 @@
 
 <script>
     import BaseSection from "../sections/BaseSection.vue";
+    import Shared from "../../shared/Shared";
+    import axios from 'axios';
 
     export default {
         name: 'BaseMain',
         components: {
             BaseSection,
-        }
+        },
+        data() {
+            return {
+                Shared,
+            }
+        },
+        created() {
+            axios.get('https://api.themoviedb.org/3/movie/upcoming',
+                {
+                    params: {
+                        api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
+                        language: 'it-IT'
+                    }
+                }
+            ).then((response) => {
+                Shared.films = response.data.results;
+            }).catch((error) => {
+                console.log(error);
+            })
+
+            axios.get('https://api.themoviedb.org/3/tv/on_the_air',
+                {
+                    params: {
+                        api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
+                        language: 'it-IT'
+                    }
+                }
+            ).then((response) => {
+                Shared.tvSeries = response.data.results;
+            }).catch((error) => {
+                console.log(error);
+            })
+        },
     }
 </script>
 
