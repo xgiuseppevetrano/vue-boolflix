@@ -48,6 +48,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import '../../assets/style/mixins.scss';
+
     .card {
         position: relative;
                 
@@ -59,8 +61,8 @@ export default {
             left: 0;
             bottom: 0;
             height: 60%;
-            background-color: rgba(0, 0, 0, 0.8);
-            color: white;
+            background-color: rgba(var(--bg-color-overlay));
+            color: var(--primary-color-text);
             font-size: .875rem;
             padding: .3125rem;
         }
@@ -88,24 +90,22 @@ export default {
             }
                 
             &::-webkit-scrollbar-thumb {
-                background: lightgray; 
+                background: var(--bg-color-scrollbar); 
                 border-radius: .625rem;
             }
 
             &::-webkit-scrollbar-thumb:hover {
-                background: gray; 
+                background: var(--bg-color-active-scrollbar);
             }
         }
 
         &__info-plus {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            @include dflex(space-between);
             padding-top: .3125rem;
         }
 
         &__star {
-            color: #fdcc0d;
+            color: var(--bg-color-stars);
         }
 
         &:hover &__overlay {

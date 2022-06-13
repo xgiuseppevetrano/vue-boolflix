@@ -23,18 +23,14 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../../assets/style/mixins.scss';
+
     header {
         background-color: var(--primary-color);
         height: var(--header-height);
 
-        .container {
-            max-width: var(--container-header-md);
-        }
-
         .header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            @include dflex(space-between);
         }
     }
 </style>

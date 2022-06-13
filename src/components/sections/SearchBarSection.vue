@@ -2,7 +2,7 @@
     <div class="search-bar">
         <form>
             <input v-show="isInputActive" class="search-bar__input" type="text" placeholder="Cerca un film o una serie tv" v-model="search">
-            <button class="search-bar__button" @click="submitForm()"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button class="search-bar__button" @click.prevent="submitForm()"><i class="fa-solid fa-magnifying-glass"></i></button>
         </form>
         <div class="search-bar__notification">
             <span class="search-bar__notification-icon"><i class="fa-solid fa-bell"></i></span>
@@ -69,30 +69,28 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../../assets/style/mixins.scss';
+
     .search-bar {
-        display: flex;
-        align-items: center;
+        @include dflex(flex-start);
 
         &__input {
             margin-right: 10px;
             padding: .3125rem .9375rem;
-            border: none;
             text-align: center;
-            background-color: transparent;
-            color: var(--primary-color-text);
         }
 
         &__button {
-            border: none;
-            background-color: transparent;
             font-size: 1.25rem;
-            color: var(--primary-color-text);
             vertical-align: middle;
             cursor: pointer;
         }
 
-        &__button:hover &__input {
-            display: inline-block;
+        &__input,
+        &__button {
+            border: none;
+            background-color: transparent;
+            color: var(--primary-color-text);
         }
 
         &__notification {
@@ -101,8 +99,6 @@
             &-icon {
                 margin: 0 1.5625rem;
                 font-size: 1.25rem;
-                color: var(--primary-color-text);
-                cursor: pointer;
             }
 
             &-number {
@@ -110,16 +106,19 @@
                 top: 0;
                 right: 1.25rem;
                 padding: 0 .25rem;
-                background-color: #e50914;
+                background-color: var(--bg-color-alert);
                 border-radius: 50%;
-                color: var(--primary-color-text);
                 font-size: .625rem;
+            }
+
+            &-icon,
+            &-number {
+                color: var(--primary-color-text);
                 cursor: pointer;
             }
         }
 
         &__profile {
-            
             &-img {
                 height: 2.1875rem;
                 aspect-ratio: 1;

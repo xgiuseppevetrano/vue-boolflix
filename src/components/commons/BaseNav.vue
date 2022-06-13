@@ -113,10 +113,11 @@
 </script>
 
 <style lang="scss" scoped>
+    @import '../../assets/style/mixins.scss';
+    
     .nav-bar {
         &__list {
-            display: flex;
-            align-items: center;
+            @include dflex(flex-start);
         }
 
         &__item {

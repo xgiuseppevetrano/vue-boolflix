@@ -66,12 +66,12 @@
         }
             
         &::-webkit-scrollbar-thumb {
-            background: lightgray; 
+            background: var(--bg-color-scrollbar); 
             border-radius: .625rem;
         }
 
         &::-webkit-scrollbar-thumb:hover {
-            background: gray;
+            background: var(--bg-color-active-scrollbar);
         }
 
         .main__title {

@@ -18,9 +18,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+    @import '../../assets/style/mixins.scss';
+    
     .logo {
-        display: flex;
-        align-items: center;
+        @include dflex(flex-start);
 
         &__img {
             height: 2.5rem;
