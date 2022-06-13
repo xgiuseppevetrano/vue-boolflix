@@ -132,5 +132,14 @@
                 cursor: pointer;
             }
         }
+
+        &__notification,
+        &__profile {
+            @media screen and (max-width: 36rem) {
+                & {
+                    display: none;
+                }
+            }
+        }
     }
 </style>

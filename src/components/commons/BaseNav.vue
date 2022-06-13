@@ -1,11 +1,9 @@
 <template>
   <nav class="nav-bar">
     <ul class="nav-bar__list">
-        <li class="nav-bar__item"><a @click.prevent="currentTitle()" class="nav-bar__link active" href="#">Home</a></li>
-        <li class="nav-bar__item"><a @click.prevent="topRatedTvSeries()" class="nav-bar__link" href="#">Serie TV</a></li>
-        <li class="nav-bar__item"><a @click.prevent="topRatedMovie()" class="nav-bar__link" href="#">Film</a></li>
-        <li class="nav-bar__item"><a @click.prevent="mostPopular()" class="nav-bar__link" href="#">Nuovi e popolari</a></li>
-        <li class="nav-bar__item"><a class="nav-bar__link" href="#">La mia lista</a></li>
+        <li v-for="(link, index) in links" :key="index" class="nav-bar__item">
+            <a @click.prevent="currentLink(index)" class="nav-bar__link" :class="{active : link.isActive}" href="#">{{link.text}}</a>
+        </li>
     </ul>
   </nav>
 </template>
@@ -20,93 +18,137 @@
             return {
                 search: '',
                 Shared,
-                isActive: false
+                links: [
+                    {
+                        text: 'Home',
+                        isActive: true
+                    },
+                    {
+                        text: 'Serie Tv',
+                        isActive: false
+                    },
+                    {
+                        text: 'Film',
+                        isActive: false
+                    },
+                    {
+                        text: 'Nuovi e popolari',
+                        isActive: false
+                    },
+                    {
+                        text: 'La mia lista',
+                        isActive: false
+                    }
+                ]
             }
         },
         methods: {
-            topRatedTvSeries() {
-                axios.get('https://api.themoviedb.org/3/tv/top_rated',
-                    {
-                        params: {
-                            api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
-                            language: 'it-IT'
+            currentLink(index) {
+                if (index === 0) {
+                    this.links.forEach(link => link.isActive = false);
+                    this.links[index].isActive = !this.links[index].isActive;
+                    axios.get('https://api.themoviedb.org/3/movie/upcoming',
+                        {
+                            params: {
+                                api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
+                                language: 'it-IT'
+                            }
                         }
-                    }
-                ).then((response) => {
-                    Shared.tvSeries = response.data.results;
-                    Shared.films = [];
-                }).catch((error) => {
-                    console.log(error);
-                })
-            },
-            topRatedMovie() {
-                axios.get('https://api.themoviedb.org/3/movie/top_rated',
-                    {
-                        params: {
-                            api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
-                            language: 'it-IT'
-                        }
-                    }
-                ).then((response) => {
-                    Shared.films = response.data.results;
-                    Shared.tvSeries = [];
-                }).catch((error) => {
-                    console.log(error);
-                })
-            },
-            mostPopular() {
-                axios.get('https://api.themoviedb.org/3/movie/popular',
-                    {
-                        params: {
-                            api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
-                            language: 'it-IT'
-                        }
-                    }
-                ).then((response) => {
-                    Shared.films = response.data.results;
-                }).catch((error) => {
-                    console.log(error);
-                })
+                    ).then((response) => {
+                        Shared.films = response.data.results;
+                    }).catch((error) => {
+                        console.log(error);
+                    })
 
-                axios.get('https://api.themoviedb.org/3/tv/popular',
-                    {
-                        params: {
-                            api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
-                            language: 'it-IT'
+                    axios.get('https://api.themoviedb.org/3/tv/on_the_air',
+                        {
+                            params: {
+                                api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
+                                language: 'it-IT'
+                            }
                         }
-                    }
-                ).then((response) => {
-                    Shared.tvSeries = response.data.results;
-                }).catch((error) => {
-                    console.log(error);
-                })
-            },
-            currentTitle() {
-                axios.get('https://api.themoviedb.org/3/movie/upcoming',
-                    {
-                        params: {
-                            api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
-                            language: 'it-IT'
+                    ).then((response) => {
+                        Shared.tvSeries = response.data.results;
+                    }).catch((error) => {
+                        console.log(error);
+                    })
+                } else if (index === 1) {
+                    this.links.forEach(link => link.isActive = false);
+                    this.links[index].isActive = !this.links[index].isActive;
+                    axios.get('https://api.themoviedb.org/3/tv/top_rated',
+                        {
+                            params: {
+                                api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
+                                language: 'it-IT'
+                            }
                         }
-                    }
-                ).then((response) => {
-                    Shared.films = response.data.results;
-                }).catch((error) => {
-                    console.log(error);
-                })
+                    ).then((response) => {
+                        Shared.tvSeries = response.data.results;
+                        Shared.films = [];
+                    }).catch((error) => {
+                        console.log(error);
+                    })
+                } else if (index === 2) {
+                    this.links.forEach(link => link.isActive = false);
+                    this.links[index].isActive = !this.links[index].isActive;
+                    axios.get('https://api.themoviedb.org/3/movie/top_rated',
+                        {
+                            params: {
+                                api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
+                                language: 'it-IT'
+                            }
+                        }
+                    ).then((response) => {
+                        Shared.films = response.data.results;
+                        Shared.tvSeries = [];
+                    }).catch((error) => {
+                        console.log(error);
+                    })
+                } else if (index === 3) {
+                    this.links.forEach(link => link.isActive = false);
+                    this.links[index].isActive = !this.links[index].isActive;
+                    axios.get('https://api.themoviedb.org/3/movie/popular',
+                        {
+                            params: {
+                                api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
+                                language: 'it-IT'
+                            }
+                        }
+                    ).then((response) => {
+                        Shared.films = response.data.results;
+                    }).catch((error) => {
+                        console.log(error);
+                    })
 
-                axios.get('https://api.themoviedb.org/3/tv/on_the_air',
-                    {
-                        params: {
-                            api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
-                            language: 'it-IT'
+                    axios.get('https://api.themoviedb.org/3/tv/popular',
+                        {
+                            params: {
+                                api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
+                                language: 'it-IT'
+                            }
                         }
-                    }
-                ).then((response) => {
-                    Shared.tvSeries = response.data.results;
-                }).catch((error) => {
-                    console.log(error);
-                })
+                    ).then((response) => {
+                        Shared.tvSeries = response.data.results;
+                    }).catch((error) => {
+                        console.log(error);
+                    })
+                } else if (index === 4) {
+                    this.links.forEach(link => link.isActive = false);
+                    this.links[index].isActive = !this.links[index].isActive;
+                    axios.get('https://api.themoviedb.org/3/tv/on_the_air',
+                        {
+                            params: {
+                                api_key: 'a7a419e37d72e1c36a8e9d8a86beb8d5',
+                                language: 'it-IT'
+                            }
+                        }
+                    ).then((response) => {
+                        Shared.tvSeries = response.data.results;
+                        Shared.films = [];
+                    }).catch((error) => {
+                        console.log(error);
+                    })
+                }
             }
         }
     }

@@ -24,7 +24,7 @@ export default {
     },
     methods: {
         languageIso(language) {
-            return language === 'en' ? 'gb' : language === 'ja' ? 'jp' : language === 'ms' ? 'gb' : language;
+            return language === 'en' ? 'gb' : language === 'ja' ? 'jp' : language === 'ms' ? 'gb' : language === 'pt' ? 'es' : language;
         },
         urlImage(url) {
             if (url === null) {

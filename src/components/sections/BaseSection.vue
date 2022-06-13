@@ -46,36 +46,36 @@
         }
 
         .col {
-            width: calc(100% / 7 - 1.875rem);
+            width: calc(100% / 6 - 1.875rem);
             margin: .9375rem;
 
             @media screen and (max-width: 75rem) {
-                & {
-                    width: calc(100% / 6 - 1.875rem);
-                }
-            }
-
-            @media screen and (max-width: 62rem) {
                 & {
                     width: calc(100% / 5 - 1.875rem);
                 }
             }
 
-            @media screen and (max-width: 48rem) {
+            @media screen and (max-width: 62rem) {
                 & {
                     width: calc(100% / 4 - 1.875rem);
                 }
             }
 
-            @media screen and (max-width: 36rem) {
+            @media screen and (max-width: 48rem) {
                 & {
                     width: calc(100% / 3 - 1.875rem);
                 }
             }
 
-            @media screen and (max-width: 25rem) {
+            @media screen and (max-width: 36rem) {
                 & {
                     width: calc(100% / 2 - 1.875rem);
+                }
+            }
+
+            @media screen and (max-width: 25rem) {
+                & {
+                    width: calc(100% - 1.875rem);
                 }
             }
         }
