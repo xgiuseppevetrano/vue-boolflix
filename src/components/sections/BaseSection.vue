@@ -5,7 +5,7 @@
             <div class="row">
                 <BaseCard class="col" v-for="film in Shared.films" :key="film.id" :card="film"/>
             </div>
-            <h2 v-show="Shared.tvSeries.length !== 0" class="row-title row-title--space">Serie tv</h2>
+            <h2 v-show="Shared.tvSeries.length !== 0" class="row-title">Serie tv</h2>
             <div class="row">
                 <BaseCard class="col" v-for="tvSerie in Shared.tvSeries" :key="tvSerie.id" :card="tvSerie"/>
             </div>
@@ -38,11 +38,7 @@
         &-title {
             font-weight: 700;
             color: var(--primary-color-text);
-            margin: 0 .9375rem;
-
-            &--space {
-                margin-top: 1.875rem;
-            }
+            margin: 1.875rem .9375rem 0;
         }
 
         .col {

@@ -10,7 +10,7 @@
             </div>
             <div class="card__info-plus">
                 <flag :iso="languageIso(card.original_language)"/>
-                <span class="card__star" v-html="starsVote(card.vote_average)"></span>
+                <span class="card__star"><i v-for="n in 5" :key="n" class="fa-star" :class="n <= Math.ceil(card.vote_average / 2) ? 'fa-solid' : 'fa-regular'"></i></span>
             </div>
         </div>
     </div>
@@ -31,17 +31,6 @@ export default {
                 return `https://via.placeholder.com/185x260?text=No image`
             } 
             return `https://image.tmdb.org/t/p/w185/${url}`
-        },
-        starsVote(vote) {
-            let htmlFullStars = '';
-            let htmlEmptyStars = '';
-            for (let i = 0; i < Math.ceil(vote / 2); i++) {
-                htmlFullStars += '<i class="fa-solid fa-star"></i>';
-            }
-            for (let i = 0; i < (5 - Math.ceil(vote / 2)); i++) {
-                htmlEmptyStars += '<i class="fa-regular fa-star"></i>';
-            }
-            return `${htmlFullStars}${htmlEmptyStars}`;
         }
     }
 }

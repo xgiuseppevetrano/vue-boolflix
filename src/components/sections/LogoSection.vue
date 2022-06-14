@@ -2,7 +2,7 @@
   <section>
     <div class="logo">
         <img class="logo__img" src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Logonetflix.png" alt="logo img">
-        <BaseNav class="nav-bar"/>
+        <BaseNav/>
     </div>
   </section>
 </template>
@@ -27,14 +27,6 @@ export default {
             height: 2.5rem;
             vertical-align: middle;
             margin-right: 1.25rem;
-        }
-    }
-
-    .nav-bar {
-        @media screen and (max-width: 48rem) {
-            & {
-                display: none;
-            }
         }
     }
 </style>
